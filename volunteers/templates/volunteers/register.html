@@ -1,9 +1,18 @@
 {% extends 'volunteers/base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
-    <h3>Стать волонтером</h3>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Готово</button>
-    </form>
+<h5><b>Заполните форму</b></h5>
+<form method="POST" class="post-form">{% csrf_token %}
+  <div class="form-group">
+    <input type="text" class="form-control" id="name" name="name" placeholder="Ваше имя">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="phone" name="phone" placeholder="Телефон">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="give" name="give" placeholder="Чем Вы смогли бы помочь?">
+  </div>
+  <button type="submit" class="save btn btn-primary">Я волонтер!</button>
+</form>
 {% endblock %}

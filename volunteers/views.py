@@ -4,8 +4,11 @@ from .forms import PostForm
 from .models import Volunteer
 
 def volunteers(request):
-	volunteer_list = Volunteer.objects.order_by('-date')[:20]
-	context = {'volunteer_list': volunteer_list}
+	if not request.user.is_authenticated:
+		return redirect('/register')
+	else:
+		volunteer_list = Volunteer.objects.order_by('-date')
+		context = {'volunteer_list': volunteer_list}
 	return render(request, 'volunteers/volunteers.html', context)
 
 def register(request):
@@ -14,7 +17,7 @@ def register(request):
 		if form.is_valid():
 			post = form.save()
 			post.save()
-			return redirect('message')
+			return redirect('/message')
 	else:
 		form = PostForm()
 	return render(request, 'volunteers/register.html', {'form': form})
