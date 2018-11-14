@@ -1,5 +1,6 @@
 from django.contrib import admin
-from . import models
 
-admin.site.register(models.Volunteer)
+from .models import Volunteer
+
+admin.site.register(Volunteer)
 
