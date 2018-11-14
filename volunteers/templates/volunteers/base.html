@@ -18,17 +18,20 @@
 
   	<div class="collapse navbar-collapse" id="navbar1">
     	<ul class="navbar-nav mr-auto">
-      		<li class="nav-item active">
-        		<a class="nav-link" href="{% url 'volunteers:volunteers' %}">Волонтеры <span class="sr-only">(current)</span></a>
-      		</li>
-		    <li class="nav-item">
+  		{% if request.user.is_authenticated %}
+		    <li class="nav-item active">
+      		<a class="nav-link" href="{% url 'volunteers:volunteers' %}">Волонтеры <span class="sr-only">(current)</span></a>
+    		</li>
+			{% endif %}
+
+		    <li class="nav-item active">
 		    	<a class="nav-link" href="{% url 'volunteers:register' %}">Регистрация</a>
 		    </li>
     	</ul>
-    	<form class="form-inline my-2 my-lg-0">
+    	<!-- <form class="form-inline my-2 my-lg-0">
       		<input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
       		<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Найти</button>
-    	</form>
+    	</form> -->
   	</div>
 </nav>
 
